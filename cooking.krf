@@ -7,6 +7,12 @@
 (arg2Isa recipeName Recipe-CW)
 (comment recipeName "(recipeName ?name ?recipe) says that ?recipe has the name ?name.")
 
+(isa recipeURL Predicate)
+(arity recipeURL 2)
+(arg1Isa recipeURL StringObject)
+(arg2Isa recipeURL Recipe-CW)
+(comment recipeURL "(recipeURL ?url ?recipe) says that the information for ?recipe can be found at ?url.")
+
 (isa recipeRating Predicate)
 (arity recipeRating 2)
 (arg1Isa recipeRating NumberString)
@@ -15,7 +21,7 @@
 
 (isa ingredientOf Predicate)
 (arity ingredientOf 2)
-(arg1Isa ingredientOf FoodIngredientOnly)
+(arg1Isa ingredientOf DefaultDisjointEdibleStuffType)
 (arg2Isa ingredientOf Recipe-CW)
 (comment ingredientOf "(ingredientOf ?ingredient ?recipe) says that ?ingredient is used in ?recipe.")
 
@@ -39,13 +45,13 @@
 
 (isa recipeCookTime Predicate)
 (arity recipeCookTime 2)
-(arg1Isa recipeCookTime NumberString)
+(arg1Isa recipeCookTime StringObject)
 (arg2Isa recipeCookTime Recipe-CW)
 (comment recipeCookTime "(recipeCookTime ?time ?recipe) says that ?recipe takes ?time minutes to make")
 
 (isa recipeCalories Predicate)
 (arity recipeCalories 2)
-(arg1Isa recipeCalories NumberString)
+(arg1Isa recipeCalories StringObject)
 (arg2Isa recipeCalories Recipe-CW)
 (comment recipeCalories "(recipeCalories ?calories ?recipe) says that a ?recipe is ?calories number of calories")
 
@@ -67,4 +73,8 @@
 (arg2Isa skillLevelOf Recipe-CW)
 (comment skillLevelOf "(skillLevelOf ?difficulty ?recipe) says that ?recipe is of ?difficulty to make.")
 
-(isa DietaryRestriction Collection)
+(isa recipeDishType Predicate)
+(arity recipeDishType 2)
+(arg1Isa recipeDishType DefaultDisjointEdibleStuffType)
+(arg1Isa recipeDishType Recipe-CW)
+(comment recipeDishType "(recipeDishType ?dishType ?recipe) says that ?recipe is a type of dish specified by ?dishType.")
