@@ -1,6 +1,72 @@
 (in-microtheory CookingMastersMt)
 ;;; Danielle Chamberlain, Anu Raife, Isaac Rivera
 
+
+;;; for MVP: cookMethod, calories, ingredients, meal type, course, dish type
+;;; to add to MVP: rating, cuisine, cook time, dietary restrictions, skill level
+
+(<== (recommendRecipe ?inputRecipe ?outputRecipe)
+(recipeName ?inputRecipeName ?inputRecipe)
+(recipeName ?outputRecipeName ?outputRecipe)
+(different ?inputRecipe ?outputRecipe)
+(similarRecipe ?inputRecipe ?outputRecipe))
+
+
+
+(<== (similarRecipe ?recipe1 ?recipe2)
+(sameCookMethod ?recipe1 ?recipe2)
+(sameCaloricLevel ?recipe1 ?recipe2)
+(similarIngredients ?recipe1 ?recipe2)
+(sameMealType ?recipe1 ?recipe2)
+(sameCourse ?recipe1 ?recipe2)
+(sameDishType ?recipe1 ?recipe2))
+(<== (similarRecipe ?recipe1 ?recipe2)
+(sameCookMethod ?recipe1 ?recipe2)
+(sameCaloricLevel ?recipe1 ?recipe2)
+(similarIngredients ?recipe1 ?recipe2)
+(sameMealType ?recipe1 ?recipe2)
+(sameCourse ?recipe1 ?recipe2)
+(sameDishType ?recipe1 ?recipe2)
+(highRating ?recipe2))
+(<== (similarRecipe ?recipe1 ?recipe2)
+(sameCookMethod ?recipe1 ?recipe2)
+(sameCaloricLevel ?recipe1 ?recipe2)
+(similarIngredients ?recipe1 ?recipe2)
+(sameMealType ?recipe1 ?recipe2)
+(sameCourse ?recipe1 ?recipe2)
+(sameDishType ?recipe1 ?recipe2)
+(sameCuisine recipe1 recipe2))
+(<== (similarRecipe ?recipe1 ?recipe2)
+(sameCookMethod ?recipe1 ?recipe2)
+(sameCaloricLevel ?recipe1 ?recipe2)
+(similarIngredients ?recipe1 ?recipe2)
+(sameMealType ?recipe1 ?recipe2)
+(sameCourse ?recipe1 ?recipe2)
+(sameDishType ?recipe1 ?recipe2)
+(sameCookTimeLevel recipe1 recipe2))
+(<== (similarRecipe ?recipe1 ?recipe2)
+(sameCookMethod ?recipe1 ?recipe2)
+(sameCaloricLevel ?recipe1 ?recipe2)
+(similarIngredients ?recipe1 ?recipe2)
+(sameMealType ?recipe1 ?recipe2)
+(sameCourse ?recipe1 ?recipe2)
+(sameDishType ?recipe1 ?recipe2)
+(sameDiet recipe1 recipe2))
+(<== (similarRecipe ?recipe1 ?recipe2)
+(sameCookMethod ?recipe1 ?recipe2)
+(sameCaloricLevel ?recipe1 ?recipe2)
+(similarIngredients ?recipe1 ?recipe2)
+(sameMealType ?recipe1 ?recipe2)
+(sameCourse ?recipe1 ?recipe2)
+(sameDishType ?recipe1 ?recipe2)
+(sameSkillLevel recipe1 recipe2))
+
+
+
+
+
+
+
 (<== (dietaryRestrictionOf Vegan ?recipe)
 (recipeCuisine VeganCuisine ?recipe))
 
@@ -53,13 +119,16 @@
 (skillLevelOf ?skillLevel ?recipe1)
 (skillLevelOf ?skillLevel ?recipe2))
 
-(<== (sameRatingLevel ?recipe1 ?recipe2)
-(recipeRating ?ratingLevel ?recipe1)
-(recipeRating ?ratingLevel ?recipe2))
+(<== (highRating ?recipe)
+(recipeRating 3 ?recipe))
+(<== (highRating ?recipe)
+(recipeRating 3.5 ?recipe))
+(<== (highRating ?recipe)
+(recipeRating 4 ?recipe))
 
-(<== (sameCookTimeLevel ?recipe1 ?recipe2)
-(recipeCookTime ?cookTime ?recipe1)
-(recipeCookTime ?cookTime ?recipe2))
+;;;(<== (sameCookTimeLevel ?recipe1 ?recipe2)
+;;;(recipeCookTime ?cookTime ?recipe1)
+;;;(recipeCookTime ?cookTime ?recipe2))
 
 (<== (sameCaloricLevel ?recipe1 ?recipe2)
 (recipeCalories ?caloricLevel ?recipe1)
@@ -69,7 +138,7 @@
 (recipeDishType ?dishType ?recipe1)
 (recipeDishType ?dishType ?recipe2))
 
-(<== (similarIngredient ?recipe1 ?recipe2)
+(<== (similarIngredients ?recipe1 ?recipe2)
 (ingredientOf ?ingredient1 ?recipe1)
 (ingredientOf ?ingredient1 ?recipe2)
 (ingredientOf ?ingredient2 ?recipe1)
