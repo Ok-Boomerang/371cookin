@@ -1,1 +1,36 @@
+(in-microtheory CookingMastersMt)
 ;;; Danielle Chamberlain, Anu Raife, Isaac Rivera
+
+(isa recipeName Predicate)
+(arity recipeName 2)
+(arg1Isa recipeName StringObject)
+(arg2Isa recipeName Recipe-CW)
+(comment recipeName "(recipeName ?name ?recipe) says that ?recipe has the name ?name.")
+
+(isa recipeReview Predicate)
+(arity recipeReview 2)
+(arg1Isa recipeReview NumberString)
+(arg2Isa recipeReview Recipe-CW)
+(comment recipeReview "(recipeReview ?rating ?recipe) says that ?recipe has ?rating out of 5 stars.")
+
+(isa ingredientOf Predicate)
+(arity ingredientOf 2)
+(arg1Isa ingredientOf Food)
+(arg2Isa ingredientOf Recipe-CW)
+(comment ingredientOf "(ingredientOf ?ingredient ?recipe) says that ?ingredient is used in ?recipe.")
+
+(isa recipeCuisine Predicate)
+(arity recipeCuisine 2)
+(arg1Isa recipeCuisine Cuisine)
+(arg2Isa recipeCuisine Recipe-CW)
+(comment recipeCuisine "(recipeCuisine ?cuisine ?recipe) says that ?recipe is a type of ?cuisine.")
+
+(isa recipeMealType Predicate)
+(arity recipeMealType 2)
+(arg1Isa recipeMealType MealType )
+(arg2Isa recipeMealType Recipe-CW)
+(comment recipeMealType "(recipeMealType ?meal ?recipe) says that ?recipe is eaten as a part of a ?meal (breakfast, lunch, dinner, etc.)")
+
+(isa recipeCourse Predicate)
+(arity recipeCourse 2)
+(arg1Isa recipeCourse)
