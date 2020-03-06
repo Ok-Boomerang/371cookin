@@ -7,8 +7,6 @@
 ((<== dietaryRestrictionOf Vegetarian ?recipe)
 (recipeCuisine VegetarianCuisine ?recipe))
 
-
-
 (isa Paleo DietaryRestriction)
 (isa NutFree DietaryRestriction)
 (isa GlutenFree DietaryRestriction)
@@ -19,6 +17,8 @@
 (isa HeartHealthy DietaryRestriction)
 (isa WeightLoss DietaryRestriction)
 (isa LowCarb DietaryRestriction)
+(isa LowFat DietaryRestriction)
+
 (genls SideDish CourseOfAMeal)
 (genls Dessert CourseOfAMeal)
 (genls Salad CourseOfAMeal)
