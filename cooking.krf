@@ -7,15 +7,15 @@
 (arg2Isa recipeName Recipe-CW)
 (comment recipeName "(recipeName ?name ?recipe) says that ?recipe has the name ?name.")
 
-(isa recipeReview Predicate)
-(arity recipeReview 2)
-(arg1Isa recipeReview NumberString)
-(arg2Isa recipeReview Recipe-CW)
-(comment recipeReview "(recipeReview ?rating ?recipe) says that ?recipe has ?rating out of 5 stars.")
+(isa recipeRating Predicate)
+(arity recipeRating 2)
+(arg1Isa recipeRating NumberString)
+(arg2Isa recipeRating Recipe-CW)
+(comment recipeRating "(recipeReview ?rating ?recipe) says that ?recipe has ?rating out of 5 stars.")
 
 (isa ingredientOf Predicate)
 (arity ingredientOf 2)
-(arg1Isa ingredientOf Food)
+(arg1Isa ingredientOf FoodIngredientOnly)
 (arg2Isa ingredientOf Recipe-CW)
 (comment ingredientOf "(ingredientOf ?ingredient ?recipe) says that ?ingredient is used in ?recipe.")
 
@@ -54,4 +54,12 @@
 (arg1Isa cookMethodOf PreparingFood-Food-Topic)
 (arg2Isa cookMethodOf Recipe-CW)
 (comment cookMethodOf "(cookMethodOf ?method ?recipe) says that a ?recipe is prepared using ?method")
+
+(isa dietaryRestrictionOf Predicate)
+(arity dietaryRestrictionOf 2)
+(arg1Isa dietaryRestrictionOf DietaryRestriction)
+(arg2Isa dietaryRestrictionOf Recipe-CW)
+(comment dietaryRestrictionOf "(dietaryRestrictionOf ?restriction ?recipe) says that a ?recipe is safe for people with ?restriction")
+
+
 
