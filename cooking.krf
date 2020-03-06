@@ -17,7 +17,7 @@
 (arity recipeRating 2)
 (arg1Isa recipeRating NumberString)
 (arg2Isa recipeRating Recipe-CW)
-(comment recipeRating "(recipeReview ?rating ?recipe) says that ?recipe has ?rating out of 5 stars.")
+(comment recipeRating "(recipeReview ?rating ?recipe) says that ?recipe has ?rating out of 4 forks.")
 
 (isa ingredientOf Predicate)
 (arity ingredientOf 2)
