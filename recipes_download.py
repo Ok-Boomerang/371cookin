@@ -9,6 +9,18 @@ CUISINES = ['Italian', 'Mexican', 'Chinese', 'Indian', 'Thai', 'Japanese', 'Kore
             'Belgian', 'Austrian', 'Scandinavian', 'Swiss', 'European', 'Australian and New Zealander', 'Canadian',
             'Amish and Mennonite', 'Jewish', 'Soul Food', 'Southern', 'Tex-Mex', 'Cajun and Creole', 'U.S.']
 
+MEALS = ['Breakfast and Brunch', 'Dinners', 'Lunch']
+DIETARY = ['Diabetic', 'Low Carb Recipes', 'Dairy Free Recipes', 'Gluten Free', 'Heart-Healthy Recipes',
+           'High Fiber Recipes', 'Low Calorie', 'Low Cholesterol Recipes', 'Low Fat', 'Weight-Loss Recipes',
+           'Paleo', 'Vegan', 'Vegetarian']
+#paleo, nut free
+STYLE = ['Pressure Cooker', 'Slow Cooker']
+
+SKILL
+
+DISH = ['Main Dishes', 'Soups, Stew, and Chili Recipes', 'Appetizers & Snacks', 'Desserts']
+
+
 class Recipe:
     def __init__(self, name, rating, ingredients, cuisine, meal, course, cooktime, calories, methods, restriction):
         self.name = name
