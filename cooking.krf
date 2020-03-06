@@ -60,3 +60,11 @@
 (arg1Isa dietaryRestrictionOf DietaryRestriction)
 (arg2Isa dietaryRestrictionOf Recipe-CW)
 (comment dietaryRestrictionOf "(dietaryRestrictionOf ?restriction ?recipe) says that a ?recipe is safe for people with ?restriction")
+
+(isa skillLevelOf Predicate)
+(arity skillLevelOf 2)
+(arg1Isa skillLevelOf StringObject)
+(arg2Isa skillLevelOf Recipe-CW)
+(comment skillLevelOf "(skillLevelOf ?difficulty ?recipe) says that ?recipe is of ?difficulty to make.")
+
+(isa DietaryRestriction Collection)
