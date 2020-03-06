@@ -15,7 +15,7 @@
 
 (isa ingredientOf Predicate)
 (arity ingredientOf 2)
-(arg1Isa ingredientOf FoodIngredientOnly)
+(arg1Isa ingredientOf DefaultDisjointEdibleStuffType)
 (arg2Isa ingredientOf Recipe-CW)
 (comment ingredientOf "(ingredientOf ?ingredient ?recipe) says that ?ingredient is used in ?recipe.")
 
@@ -67,4 +67,8 @@
 (arg2Isa skillLevelOf Recipe-CW)
 (comment skillLevelOf "(skillLevelOf ?difficulty ?recipe) says that ?recipe is of ?difficulty to make.")
 
-(isa DietaryRestriction Collection)
+(isa recipeDishType Predicate)
+(arity recipeDishType 2)
+(arg1Isa recipeDishType DefaultDisjointEdibleStuffType)
+(arg1Isa recipeDishType Recipe-CW)
+(comment recipeDishType "(recipeDishType ?dishType ?recipe) says that ?recipe is a type of dish specified by ?dishType.")
