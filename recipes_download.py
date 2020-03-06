@@ -9,6 +9,26 @@ CUISINES = ['Italian', 'Mexican', 'Chinese', 'Indian', 'Thai', 'Japanese', 'Kore
             'Belgian', 'Austrian', 'Scandinavian', 'Swiss', 'European', 'Australian and New Zealander', 'Canadian',
             'Amish and Mennonite', 'Jewish', 'Soul Food', 'Southern', 'Tex-Mex', 'Cajun and Creole', 'U.S.']
 
+MEALS = ['Breakfast and Brunch', 'Dinners', 'Lunch']
+
+DIETARY = ['Diabetic', 'Low Carb Recipes', 'Dairy Free Recipes', 'Gluten Free', 'Heart-Healthy Recipes',
+           'High Fiber Recipes', 'Low Calorie', 'Low Cholesterol Recipes', 'Low Fat', 'Weight-Loss Recipes',
+           'Paleo', 'Vegan', 'Vegetarian']
+# nut free
+STYLE = ['Pressure Cooker', 'Slow Cooker']
+
+SKILL = ['Gourmet', "Quick & Easy"]
+
+DISH = ['Main Dishes', 'Soups, Stew, and Chili Recipes', 'Appetizers & Snacks', 'Desserts']
+
+TYPES = ['Pizza', 'Sandwiches', 'Pasta Recipes', 'Cookie Recipes', 'Casserole Recipes', 'Cake Recipes', 'Bread Recipes',
+         'Pie Recipes']
+
+INGREDIENTS = ['Beef', 'Beans and Legumes', 'Chicken Recipes', 'Chocolate', 'Fruit', 'Game Meats', 'Grains', 'Mushrooms',
+               'Pork Recipes', 'Potatoes', 'Poultry', 'Rice', 'Salmon', 'Seafood', 'Shrimp', 'Tofu and Tempeh',
+               'Turkey', 'Vegetable Recipes']
+
+
 class Recipe:
     def __init__(self, name, rating, ingredients, cuisine, meal, course, cooktime, calories, methods, restriction):
         self.name = name
@@ -27,9 +47,7 @@ def parse_recipe(soup):
     name = parse_name(soup)
     rating = parse_rating(soup)
     ingredients = parse_ingredients(soup)
-    cuisine = parse_cuisine(soup)
-    meal = parse_meal(soup)
-    course = parse_course(soup)
+    cuisine, meal, dietary, style, skill, dish, type, ingredient = parse_cuisine(soup)
     cooktime = parse_time(soup)
     calories = parse_calories(soup)
     methods = parse_methods(soup)
@@ -57,22 +75,43 @@ def parse_ingredients(soup):
 
 def parse_cuisine(soup):
     cuisine = None
+    meal = None
+    dietary = None
+    style = None
+    skill = None
+    dish = None
+    type = None
+    ingredient = None
     breadcrumbs = soup.find('ol', {'class': 'breadcrumbs'})
     if breadcrumbs:
         for crumb in breadcrumbs.findAll('li'):
-            poss_cuisine = crumb.find('span').text
+            bc = crumb.find('span').text
             for cuis in CUISINES:
-                if all([char in poss_cuisine for char in cuis]):
+                if all([char in bc for char in cuis]):
                     cuisine = cuis
-    return cuisine
+            for m in MEALS:
+                if all([char in bc for char in m]):
+                    meal = m
+            for diet in DIETARY:
+                if all([char in bc for char in diet]):
+                    dietary = diet
+            for s in STYLE:
+                if all([char in bc for char in s]):
+                    style = s
+            for sk in SKILL:
+                if all([char in bc for char in sk]):
+                    skill = sk
+            for d in DISH:
+                if all([char in bc for char in d]):
+                    dish = d
+            for t in TYPES:
+                if all([char in bc for char in t]):
+                    type = t
+            for ing in INGREDIENTS:
+                if all([char in bc for char in ing]):
+                    ingredient = ing
 
-
-def parse_meal(soup):
-    pass
-
-
-def parse_course(soup):
-    pass
+    return cuisine, meal, dietary, style, skill, dish, type, ingredient
 
 
 def parse_time(soup):
