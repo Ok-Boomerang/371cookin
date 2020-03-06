@@ -1,2 +1,17 @@
 (in-microtheory CookingMastersMt)
 ;;; Danielle Chamberlain, Anu Raife, Isaac Rivera
+
+((<== dietaryRestrictionOf Vegan ?recipe)
+(recipeCuisine VeganCuisine ?recipe))
+
+((<== dietaryRestrictionOf Vegetarian ?recipe)
+(recipeCuisine VegetarianCuisine ?recipe))
+
+
+
+(isa NutFree DietaryRestriction)
+(isa GlutenFree DietaryRestriction)
+(isa SugarFree DietaryRestriction)
+(genls SideDish CourseOfAMeal)
+(genls Dessert CourseOfAMeal)
+(genls Salad CourseOfAMeal)
