@@ -60,3 +60,5 @@
 (arg1Isa dietaryRestrictionOf DietaryRestriction)
 (arg2Isa dietaryRestrictionOf Recipe-CW)
 (comment dietaryRestrictionOf "(dietaryRestrictionOf ?restriction ?recipe) says that a ?recipe is safe for people with ?restriction")
+
+(isa DietaryRestriction Collection)

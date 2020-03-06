@@ -9,9 +9,19 @@
 
 
 
+(isa Paleo DietaryRestriction)
 (isa NutFree DietaryRestriction)
 (isa GlutenFree DietaryRestriction)
-(isa SugarFree DietaryRestriction)
+(isa Diabetic DietaryRestriction)
+(isa DairyFree DietaryRestriction)
+(isa LowCholesterol DietaryRestriction)
+(isa HighFiber DietaryRestriction)
+(isa HeartHealthy DietaryRestriction)
+(isa WeightLoss DietaryRestriction)
+(isa LowCarb DietaryRestriction)
 (genls SideDish CourseOfAMeal)
 (genls Dessert CourseOfAMeal)
 (genls Salad CourseOfAMeal)
+
+(isa SlowCook PreparingFood-Food-Topic)
+(isa PressureCook PreparingFood-Food-Topic)
