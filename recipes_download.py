@@ -83,6 +83,11 @@ def parse_recipe(url, soup, id, f):
 def parse_name(soup):
     name = soup.find("h1", {"itemprop": "name"}).text
     name = name.replace(" ", "")
+    name = name.replace(",","")
+    name = name.replace("-","")
+    if '(' in name:
+        ind = name.index('(')
+        name = name[:ind]
     return name
 
 
