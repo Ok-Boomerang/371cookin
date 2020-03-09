@@ -129,6 +129,7 @@
 (isa OrganicDiet DietaryProgram)
 (isa PaleoDiet DietaryProgram)
 (isa Pescatarian DietaryProgram)
+(isa HighProtein DietaryProgram)
 
 (isa Brownie DefaultDisjointEdibleStuffType)
 (isa Casserole DefaultDisjointEdibleStuffType)

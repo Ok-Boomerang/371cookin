@@ -14,7 +14,7 @@ DISH = ['Side', 'Appetizer', 'Dessert', 'Buffet', 'Salad', "Hors D'oeuvre"]
 
 DIETARY = ['Healthy', 'High Fiber', 'Kid-Friendly', 'Low Cholesterol', 'Low Fat', 'Low Sodium',
            'Low/No Sugar', 'Wheat/Gluten-Free', 'Dairy Free', 'Peanut Free',
-           'Soy Free', 'Tree Nut Free', 'Paleo', 'Pescatarian']
+           'Soy Free', 'Tree Nut Free', 'Paleo', 'Pescatarian', 'High Protein']
 
 STYLE = ['Bake', 'Barbecue', 'Boil', 'Braise', 'Brine', 'Broil', 'Chill', 'Deep Fry', 'Freeze', 'Fry', 'Marinate',
          'No-Cook', 'Pan-Fry', 'Poach', 'Roast', 'Sauté', 'Simmer', 'Steam', 'Stew', 'Stir-Fry', 'Grill', 'Backyard BBQ']
@@ -26,10 +26,10 @@ TYPES = ['Bread', 'Brownie', 'Casserole/Gratin', 'Dip', 'Flat Bread', 'Frozen De
 
 INGREDIENTS = ['Absinthe', 'AleBeer', 'AlfredoSauce', 'ArtificialFoodColoring', 'Asparagus-Foodstuff', 'Bacon', 'Bagel',
                'BakingChocolate-Unsweetened', 'BakingPowder', 'BalsamicVinegar', 'BarbecueSauce', 'Barley-TheGrain',
-               'Bean-Foodstuff', 'Beef', 'Beer', 'Beet-Foodstuff', 'BellPepper', 'Biscuit', 'BlueCheese', 'BoiledEgg',
+               'Beef', 'Beer', 'Beet-Foodstuff', 'BellPepper', 'Biscuit', 'BlueCheese', 'BoiledEgg',
                'Bologna', 'Brandy-Liquor', 'Bread', 'Broccoli-Foodstuff', 'BrownRice-Foodstuff', 'BrownSugar', 'BrusselsSprout',
                'BuffaloWing', 'Butter', 'Buttermilk', 'Cabbage-Foodstuff', 'CakeMix', 'CannelloniNoodle', 'Caper-TheCondiment',
-               'Carrot-Foodstuff', 'Caviar', 'Cheese', 'Chicken-Meat', 'ChilePepper', 'Chocolate', 'Cinnamon-Spice', 'Clove-Spice',
+               'Carrot-Foodstuff', 'Caviar', 'Chicken-Meat', 'ChilePepper', 'Chocolate', 'Cinnamon-Spice', 'Clove-Spice',
                'CocktailSauce', 'Cocoa-ThePowder', 'CoconutMeat', 'CoconutMilk', 'CoconutOil', 'Coffee-Beverage', 'Cognac-Liquor',
                'CornMeal', 'CornSyrup', 'CottageCheese', 'CowsMilk-Product', 'Cracker-FoodItem', 'Cream-Dairy', 'CreamOfRice',
                'CreamOfWheat', 'Cucumber-Foodstuff', 'DijonMustard', 'DistilledWater', 'DriedFish', 'Duck-Meat', 'Egg-Chickens',
@@ -88,7 +88,7 @@ def parse_name(soup):
     if '(' in name:
         ind = name.index('(')
         name = name[:ind]
-    return name
+    return remove_accents(name)
 
 
 def parse_rating(soup):
@@ -102,7 +102,7 @@ def parse_ingredients(soup):
                     'tablespoon', 'container', 'dash', 'quart', 'pod', 'bunch', 'clove', 'gram', 'lb', 'oz',
                     'Tbsp', 'Tbs', 'tsp', 'Tsp', '½', '⅓', '¼']
     descriptions = ['finely', 'fine', 'chopped', 'large', 'medium', 'head', 'of', 'double-concentrated', 'grated',
-                    'soft', 'small', 'sprigs']
+                    'soft', 'small', 'sprigs', 'ripe', 'leaves']
     ret = []
     for ing in ingredients:
         if '(' in ing:
@@ -139,7 +139,8 @@ def parse_ingredients(soup):
         for i, word in enumerate(arr):
             arr[i] = word[0].upper() + word[1:]
         if arr:
-            ret.append("".join(arr))
+            ingredient = remove_accents("".join(arr))
+            ret.append(ingredient)
 
     return ret
 
@@ -331,14 +332,14 @@ def insert_kb(recipe, id, f):
         f.write('\n')
     skill = recipe.skill
     if skill == "Quick & Easy":
-        f.write('(skillLevelOf easy %s)' % id)
+        f.write('(skillLevelOf beginner %s)' % id)
         f.write('\n')
     elif skill == "Advanced Prep Req'd" or skill == "Gourmet":
-        f.write('(skillLevelOf hard %s)' % id)
+        f.write('(skillLevelOf advanced %s)' % id)
         f.write('\n')
     cooktime = recipe.cooktime
     if cooktime < 30:
-        f.write('(recipeCookTime quick %s)' % id)
+        f.write('(recipeCookTime short %s)' % id)
         f.write('\n')
     elif 30 < cooktime < 60:
         f.write('(recipeCookTime medium %s)' % id)
@@ -364,6 +365,16 @@ def insert_kb(recipe, id, f):
             f.write('(ingredientOf %s %s)' % (ingredient, id))
             f.write('\n')
             INGREDIENTS.append(ingredient)
+
+
+def remove_accents(obj):
+    accents = {"ç": "c",
+               "è": "e",
+               "î": "i",
+               "ñ": "n"}
+    for accent in accents.keys():
+        obj = obj.replace(accent, accents[accent])
+    return obj
 
 
 if __name__ == "__main__":
