@@ -104,10 +104,14 @@ def parse_ingredients(soup):
             first = ing.index('(')
             second = ing.index(')')
             ing = ing.replace(ing[first:second + 1], "")
+        if '(' in ing:
+            first = ing.index('(')
+            second = ing.index(')')
+            ing = ing.replace(ing[first:second + 1], "")
         if ',' in ing:
             ind = ing.index(',')
             ing = ing[:ind]
-        ing.replace('-', " ")
+        ing = ing.replace('-', " ")
         arr = ing.split()
         if "or" in arr:
             ind = arr.index("or")
@@ -122,6 +126,8 @@ def parse_ingredients(soup):
                 if x.isdigit():
                     arr.remove(word)
                     break
+            if word == "g" or word == "g.":
+                arr.remove(word)
         for desc in descriptions:
             if desc in arr:
                 arr.remove(desc)
@@ -358,7 +364,6 @@ def insert_kb(recipe, id, f):
 if __name__ == "__main__":
     with open('recipe_urls.txt', 'r') as f:
         recipe_list = f.read().splitlines()
-    print(recipe_list)
     count = 1
     with open('recipes.krf', 'w') as f:
         f.write('(in-microtheory CookingMastersMt)')
