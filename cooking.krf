@@ -33,7 +33,7 @@
 
 (isa recipeMealType Predicate)
 (arity recipeMealType 2)
-(arg1Isa recipeMealType MealType )
+(arg1Isa recipeMealType MealType)
 (arg2Isa recipeMealType Recipe-CW)
 (comment recipeMealType "(recipeMealType ?meal ?recipe) says that ?recipe is eaten as a part of a ?meal (breakfast, lunch, dinner, etc.)")
 
@@ -57,13 +57,13 @@
 
 (isa cookMethodOf Predicate)
 (arity cookMethodOf 2)
-(arg1Isa cookMethodOf PreparingFood-Food-Topic)
+(arg1Isa cookMethodOf FoodTypeByPreparationStyle)
 (arg2Isa cookMethodOf Recipe-CW)
 (comment cookMethodOf "(cookMethodOf ?method ?recipe) says that a ?recipe is prepared using ?method")
 
 (isa dietaryRestrictionOf Predicate)
 (arity dietaryRestrictionOf 2)
-(arg1Isa dietaryRestrictionOf DietaryRestriction)
+(arg1Isa dietaryRestrictionOf DietaryProgram)
 (arg2Isa dietaryRestrictionOf Recipe-CW)
 (comment dietaryRestrictionOf "(dietaryRestrictionOf ?restriction ?recipe) says that a ?recipe is safe for people with ?restriction")
 
@@ -78,3 +78,65 @@
 (arg1Isa recipeDishType DefaultDisjointEdibleStuffType)
 (arg1Isa recipeDishType Recipe-CW)
 (comment recipeDishType "(recipeDishType ?dishType ?recipe) says that ?recipe is a type of dish specified by ?dishType.")
+
+
+(genls Side CourseOfAMeal)
+(genls Dessert CourseOfAMeal)
+(genls Salad CourseOfAMeal)
+(genls Buffet CourseOfAMeal)
+(genls HorsDoeuvre CourseOfAMeal)
+
+(isa AmericanCuisine Cuisine)
+(isa AsianCuisine Cuisine)
+(isa CalifornianCuisine Cuisine)
+(isa CentralSAmericanCuisine Cuisine)
+(isa EnglishCuisine Cuisine)
+(isa EuropeanCuisine Cuisine)
+(isa ItalianAmericanCuisine Cuisine)
+(isa JewishCuisine Cuisine)
+(isa NuevoLatinoCuisine Cuisine)
+(isa SouthwesternCuisine Cuisine)
+(isa SpanishPortugueseCuisine Cuisine)
+(isa CanadianCuisine Cuisine)
+
+
+(isa Barbecued FoodTypeByPreparationStyle)
+(isa Brined FoodTypeByPreparationStyle)
+(isa Sauteed FoodTypeByPreparationStyle)
+(isa StirFried FoodTypeByPreparationStyle)
+(isa Braised FoodTypeByPreparationStyle)
+(isa Broiled FoodTypeByPreparationStyle)
+(isa DeepFried FoodTypeByPreparationStyle)
+(isa Marinated FoodTypeByPreparationStyle)
+(isa PanFried FoodTypeByPreparationStyle)
+(isa Poached FoodTypeByPreparationStyle)
+(isa Stewed FoodTypeByPreparationStyle)
+(isa Simmered FoodTypeByPreparationStyle)
+
+(isa TreeNutFreeDiet DietaryProgram)
+(isa SoyFreeDiet DietaryProgram)
+(isa PeanutFreeDiet DietaryProgram)
+(isa DairyFreeDiet DietaryProgram)
+(isa GlutenFreeDiet DietaryProgram)
+(isa LowSugarDiet DietaryProgram)
+(isa KidFriendlyDiet DietaryProgram)
+(isa HealthyDiet DietaryProgram)
+(isa HighFiberDiet DietaryProgram)
+(isa LowCholesterolDiet DietaryProgram)
+(isa LowFatDiet DietaryProgram)
+(isa LowSodiumDiet DietaryProgram)
+(isa KosherDiet DietaryProgram)
+(isa OrganicDiet DietaryProgram)
+(isa PaleoDiet DietaryProgram)
+(isa Pescatarian DietaryProgram)
+
+(isa Brownie DefaultDisjointEdibleStuffType)
+(isa Casserole DefaultDisjointEdibleStuffType)
+(isa Dip DefaultDisjointEdibleStuffType)
+(isa FlatBread DefaultDisjointEdibleStuffType)
+(isa FrozenDessert DefaultDisjointEdibleStuffType)
+
+
+
+
+

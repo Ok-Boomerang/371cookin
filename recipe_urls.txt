@@ -1,2 +1,7 @@
-##THIS IS A LIST OF URLS FROM ALLRECIPES.COM TO SCRAPE FOR OUR MT##
-https://www.allrecipes.com/recipe/51535/fresh-southern-peach-cobbler/
+https://www.epicurious.com/recipes/food/views/christmas-fruit-cake
+https://www.epicurious.com/recipes/food/views/cassoulet-toast
+https://www.epicurious.com/recipes/food/views/cauliflower-bolognese-pasta
+https://www.epicurious.com/recipes/food/views/cedar-plank-salmon-354516
+https://www.epicurious.com/recipes/food/views/risotto-with-mushrooms-and-thyme
+https://www.epicurious.com/recipes/food/views/crispy-tofu-with-maple-soy-glaze
+https://www.epicurious.com/recipes/food/views/chickpea-and-chorizo-tostadas

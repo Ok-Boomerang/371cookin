@@ -62,38 +62,17 @@
 (sameSkillLevel recipe1 recipe2))
 
 
-
-
-
-
-
-(<== (dietaryRestrictionOf Vegan ?recipe)
+(<== (dietaryRestrictionOf VeganDiet ?recipe)
 (recipeCuisine VeganCuisine ?recipe))
 
-(<== (dietaryRestrictionOf Vegetarian ?recipe)
+(<== (dietaryRestrictionOf BasicVegetarianDiet ?recipe)
 (recipeCuisine VegetarianCuisine ?recipe))
 
+(<== (dietaryRestrictionOf Kosher ?recipe)
+(recipeCuisine KosherFood ?recipe))
 
-(isa Paleo DietaryRestriction)
-(isa NutFree DietaryRestriction)
-(isa GlutenFree DietaryRestriction)
-(isa Diabetic DietaryRestriction)
-(isa DairyFree DietaryRestriction)
-(isa SoyFree DietaryRestriction)
-(isa LowCholesterol DietaryRestriction)
-(isa HighFiber DietaryRestriction)
-(isa HeartHealthy DietaryRestriction)
-(isa WeightLoss DietaryRestriction)
-(isa LowCarb DietaryRestriction)
-(isa LowFat DietaryRestriction)
-
-(genls SideDish CourseOfAMeal)
-(genls Dessert CourseOfAMeal)
-(genls Salad CourseOfAMeal)
-
-(isa SlowCook PreparingFood-Food-Topic)
-(isa PressureCook PreparingFood-Food-Topic)
-
+(<== (dietaryRestrictionOf Organic ?recipe)
+(recipeCuisine OrganicCuisine ?recipe))
 
 (<== (sameCuisine ?recipe1 ?recipe2)
 (recipeCuisine ?cuisine ?recipe1)
