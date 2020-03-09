@@ -51,10 +51,16 @@ INGREDIENTS = ['Absinthe', 'AleBeer', 'AlfredoSauce', 'ArtificialFoodColoring', 
                'WhiteWineVinegar', 'WholeMilk', 'Wine', 'WineVinegar', 'Yam-Foodstuff', 'Yeast', 'YellowMustard', 'Yogurt',
                 'Zucchini-Foodstuff']
 
+EVENT = ['Anniversary', 'Bastille Day', 'Birthday', 'Christmas', 'Christmas Eve', 'Cinco de Mayo', 'Cocktail Party', 'Easter',
+         'Engagement Party', 'Fall', 'Family Reunion', "Father's Day", 'Fourth of July', 'Graduation', 'Halloween',
+         'Hanukkah', 'Kentucky Derby', 'Mardi Gras', "Mother's Day", "New Year's Day", "New Year's Eve", "Oscars", 'Party',
+         'Passover', 'Picnic', 'Poker/Game Night', 'Potluck', 'Ramadan', 'Rosh Hashanah', 'Shower', 'Spring',
+         "St. Patrick's Day", 'Summer', 'Superbowl', 'Tailgating', 'Thnaksgiving', "Valentine's Day", 'Wedding', 'Winter']
+
 
 class Recipe:
     def __init__(self, name, url, rating, ingredients, cuisine, meal, course, cooktime, calories, methods, restriction,
-                 type, skill):
+                 type, skill, event):
         self.name = name
         self.url = url
         self.rating = rating
@@ -68,16 +74,17 @@ class Recipe:
         self.restriction = restriction
         self.type = type
         self.skill = skill
+        self.event = event
 
 
 def parse_recipe(url, soup, id, f):
     name = parse_name(soup)
     rating = parse_rating(soup)
     ingredients = parse_ingredients(soup)
-    cuisine, meal, dietary, style, skill, course, type = parse_tags(soup)
+    cuisine, meal, dietary, style, skill, course, type, event = parse_tags(soup)
     cooktime = parse_time(soup)
     calories = parse_calories(soup)
-    insert_kb(Recipe(name, url, rating, ingredients, cuisine, meal, course, cooktime, calories, style, dietary, type, skill), id, f)
+    insert_kb(Recipe(name, url, rating, ingredients, cuisine, meal, course, cooktime, calories, style, dietary, type, skill, event), id, f)
 
 
 def parse_name(soup):
@@ -153,28 +160,30 @@ def parse_tags(soup):
     styles = []
     skill = None
     types = []
+    events = []
     tags = [tag.text for tag in soup.find_all('dt', {'itemprop': 'recipeCategory'})] + \
            [tag.text for tag in soup.find_all('dt', {'itemprop':'recipeCuisine'})]
     for tag in tags:
         for cuis in CUISINES:
             if tag == cuis:
+                cu = cuis
                 if cuis == "Cajun/Creole":
-                    cuis = "Cajun"
+                    cu = "Cajun"
                 elif cuis == "Eastern European":
-                    cuis = "EasternEuropeanFood"
+                    cu = "EasternEuropeanFood"
                 elif cuis == "Southeast Asian":
-                    cuis = "SouthEastAsian"
+                    cu = "SouthEastAsian"
                 elif cuis == "Southern":
-                    cuis = "SouthernStyle"
+                    cu = "SouthernStyle"
                 elif cuis == "Kosher":
-                    cuis = "KosherFood"
+                    cu = "KosherFood"
                 elif cuis == "Canada":
-                    cuis = "Canadian"
-                cuis = cuis.replace("-", "")
-                cuis = cuis.replace(" ", "")
-                cuis = cuis.replace("/", "")
-                cuis = cuis.replace(".", "")
-                cuisine.append(cuis)
+                    cu = "Canadian"
+                cu = cu.replace("-", "")
+                cu = cu.replace(" ", "")
+                cu = cu.replace("/", "")
+                cu = cu.replace(".", "")
+                cuisine.append(cu)
         for m in MEALS:
             if tag == m:
                 if m == "Dinner":
@@ -182,79 +191,89 @@ def parse_tags(soup):
                 meal.append(m)
         for d in DISH:
             if tag == d:
+                dis = d
                 if d == "Hors D'oeuvre":
-                    d = "HorsDoeuvre"
-                dish.append(d)
+                    dis = "HorsDoeuvre"
+                dish.append(dis)
         for diet in DIETARY:
             if tag == diet:
+                di = diet
                 if diet == "Low/No Sugar":
-                    diet = "LowSugar"
+                    di = "LowSugar"
                 elif diet == "Wheat/Gluten-Free":
-                    diet = "GlutenFree"
-                diet = diet.replace("-", "")
-                diet = diet.replace("/", "")
-                diet = diet.replace(" ", "")
-                dietary.append(diet)
+                    di = "GlutenFree"
+                di = di.replace("-", "")
+                di = di.replace("/", "")
+                di = di.replace(" ", "")
+                dietary.append(di)
         for style in STYLE:
             if tag == style:
+                s = style
                 if style == "Bake":
-                    style = "Baked"
+                    s = "Baked"
                 elif style == "Barbecue" or style == "Backyard BBQ":
-                    style == "Barbecued"
+                    s == "Barbecued"
                 elif style == "Boil":
-                    style = "Boiled"
+                    s = "Boiled"
                 elif style == "Braise":
-                    style = "Braised"
+                    s = "Braised"
                 elif style == "Brine":
-                    style = "Brined"
+                    s = "Brined"
                 elif style == "Broil":
-                    style = "Broiled"
+                    s = "Broiled"
                 elif style == "Chill":
-                    style = "Chilled"
+                    s = "Chilled"
                 elif style == "Deep Fry":
-                    style = "DeepFried"
+                    s = "DeepFried"
                 elif style == "Freeze":
-                    style = "Frozen"
+                    s = "Frozen"
                 elif style == "Fry":
-                    style = "Fried"
+                    s = "Fried"
                 elif style == "Marinate":
-                    style = "Marinated"
+                    s = "Marinated"
                 elif style == "No-Cook":
-                    style = "AssembledFood"
+                    s = "AssembledFood"
                 elif style == "Pan-Fry":
-                    style = "PanFried"
+                    s = "PanFried"
                 elif style == "Poach":
-                    style = "Poached"
+                    s = "Poached"
                 elif style == "Roast":
-                    style = "Roasted"
+                    s = "Roasted"
                 elif style == 'Sauté':
-                    style = "Sauteed"
+                    s = "Sauteed"
                 elif style == "Simmer":
-                    style = "Simmered"
+                    s = "Simmered"
                 elif style == "Steam":
-                    style = "Steamed"
+                    s = "Steamed"
                 elif style == "Stew":
-                    style = "Stewed"
+                    s = "Stewed"
                 elif style == 'Stir-Fry':
-                    style = 'StirFried'
+                    s = 'StirFried'
                 elif style == 'Grill':
-                    style = 'Grilled'
-                styles.append(style)
+                    s = 'Grilled'
+                styles.append(s)
         for sk in SKILL:
             if tag == sk:
                 skill = sk
         for type in TYPES:
             if tag == type:
+                t = type
                 if type == 'Casserole/Gratin':
-                    type = "Casserole"
+                    t = "Casserole"
                 elif type == 'Soup/Stew':
-                    type = "Soup"
+                    t = "Soup"
                 elif type == "Pastry":
-                    type = "Pastry-Stuff"
+                    t = "Pastry-Stuff"
                 elif type == "Pasta":
-                    type = "PastaDish"
-                type.replace(" ", "")
-                types.append(type)
+                    t = "PastaDish"
+                t.replace(" ", "")
+                types.append(t)
+        for event in EVENT:
+            if tag == event:
+                e = event
+                e = e.replace("'", "")
+                e = e.replace("/", "")
+                e = e.replace(".", "")
 
     return cuisine, meal, dietary, styles, skill, dish, types
 
