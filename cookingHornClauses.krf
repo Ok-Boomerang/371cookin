@@ -74,6 +74,9 @@
 (<== (dietaryRestrictionOf Organic ?recipe)
 (recipeCuisine OrganicCuisine ?recipe))
 
+(<== (skillLevelOf beginner ?recipe)
+(cookMethodOf AssembledFood ?recipe))
+
 (<== (sameCuisine ?recipe1 ?recipe2)
 (recipeCuisine ?cuisine ?recipe1)
 (recipeCuisine ?cuisine ?recipe2))
