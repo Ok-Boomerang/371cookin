@@ -11,50 +11,91 @@
 (different ?inputRecipe ?outputRecipe)
 (similarRecipe ?inputRecipe ?outputRecipe))
 
-(<== (similarRecipe ?recipe1 ?recipe2)
-(sameCaloricLevel ?recipe1 ?recipe2)
-(similarIngredients ?recipe1 ?recipe2)
-(sameMealType ?recipe1 ?recipe2)
-(sameCookTimeLevel ?recipe1 ?recipe2))
+
+(<== (recommendRecipeCuisine ?inputRecipeName ?outputRecipeName ?cuisine)
+(recipeName ?inputRecipeName ?inputRecipe)
+(recipeName ?outputRecipeName ?outputRecipe)
+(different ?inputRecipe ?outputRecipe)
+(similarRecipe ?inputRecipe ?outputRecipe)
+(recipeCuisine ?cuisine ?outputRecipe))
+
+
+(<== (recommendRecipeMealType ?inputRecipeName ?outputRecipeName ?mealType)
+(recipeName ?inputRecipeName ?inputRecipe)
+(recipeName ?outputRecipeName ?outputRecipe)
+(different ?inputRecipe ?outputRecipe)
+(similarRecipe ?inputRecipe ?outputRecipe)
+(recipeMealType ?mealType ?outputRecipe))
+
+
+(<== (recommendRecipeCourse ?inputRecipeName ?outputRecipeName ?course)
+(recipeName ?inputRecipeName ?inputRecipe)
+(recipeName ?outputRecipeName ?outputRecipe)
+(different ?inputRecipe ?outputRecipe)
+(similarRecipe ?inputRecipe ?outputRecipe)
+(recipeCourse ?course ?outputRecipe))
+
+
+(<== (recommendRecipeCookTime ?inputRecipeName ?outputRecipeName)
+(recipeName ?inputRecipeName ?inputRecipe)
+(recipeName ?outputRecipeName ?outputRecipe)
+(different ?inputRecipe ?outputRecipe)
+(similarRecipe ?inputRecipe ?outputRecipe)
+(sameCookTimeLevel ?inputRecipeName ?outputRecipeName))
+
+
+(<== (recommendRecipeCookTime ?inputRecipeName ?outputRecipeName ?cookTime)
+(recipeName ?inputRecipeName ?inputRecipe)
+(recipeName ?outputRecipeName ?outputRecipe)
+(different ?inputRecipe ?outputRecipe)
+(similarRecipe ?inputRecipe ?outputRecipe)
+(recipeCookTime ?cookTime ?outputRecipe))
+
+
+
+(<== (recommendRecipeCalories ?inputRecipeName ?outputRecipeName)
+(recipeName ?inputRecipeName ?inputRecipe)
+(recipeName ?outputRecipeName ?outputRecipe)
+(different ?inputRecipe ?outputRecipe)
+(similarRecipe ?inputRecipe ?outputRecipe)
+(sameCaloricLevel ?inputRecipeName ?outputRecipeName))
+
+
+(<== (recommendRecipeCalories ?inputRecipeName ?outputRecipeName ?calories)
+(recipeName ?inputRecipeName ?inputRecipe)
+(recipeName ?outputRecipeName ?outputRecipe)
+(different ?inputRecipe ?outputRecipe)
+(similarRecipe ?inputRecipe ?outputRecipe)
+(recipeCalories ?calories ?outputRecipe))
+
+
+(<== (recommendRecipeCookMethod ?inputRecipeName ?outputRecipeName ?cookMethod)
+(recipeName ?inputRecipeName ?inputRecipe)
+(recipeName ?outputRecipeName ?outputRecipe)
+(different ?inputRecipe ?outputRecipe)
+(similarRecipe ?inputRecipe ?outputRecipe)
+(cookMethodOf ?cookMethod ?outputRecipe))
+
+
+(<== (recommendRecipeDiet ?inputRecipeName ?outputRecipeName ?dietaryRestriction)
+(recipeName ?inputRecipeName ?inputRecipe)
+(recipeName ?outputRecipeName ?outputRecipe)
+(different ?inputRecipe ?outputRecipe)
+(similarRecipe ?inputRecipe ?outputRecipe)
+(dietaryRestrictionOf ?dietaryRestriction ?outputRecipe))
+
+
+(<== (recommendRecipeSkill ?inputRecipeName ?outputRecipeName ?skill)
+(recipeName ?inputRecipeName ?inputRecipe)
+(recipeName ?outputRecipeName ?outputRecipe)
+(different ?inputRecipe ?outputRecipe)
+(similarRecipe ?inputRecipe ?outputRecipe)
+(skillLevelOf ?skill ?outputRecipe))
+
 
 (<== (similarRecipe ?recipe1 ?recipe2)
-(sameCaloricLevel ?recipe1 ?recipe2)
 (similarIngredients ?recipe1 ?recipe2)
-(sameMealType ?recipe1 ?recipe2)
-(sameCourse ?recipe1 ?recipe2)
-(sameCookTimeLevel ?recipe1 ?recipe2)
-(sameDishType ?recipe1 ?recipe2))
-
-(<== (similarRecipe ?recipe1 ?recipe2)
-(sameCaloricLevel ?recipe1 ?recipe2)
-(similarIngredients ?recipe1 ?recipe2)
-(sameMealType ?recipe1 ?recipe2)
-(sameCourse ?recipe1 ?recipe2)
-(sameCookTimeLevel ?recipe1 ?recipe2)
 (highRating ?recipe2))
-
-(<== (similarRecipe ?recipe1 ?recipe2)
-(sameCaloricLevel ?recipe1 ?recipe2)
-(similarIngredients ?recipe1 ?recipe2)
-(sameMealType ?recipe1 ?recipe2)
-(sameCourse ?recipe1 ?recipe2)
-(sameCuisine ?recipe1 ?recipe2))
-
-(<== (similarRecipe ?recipe1 ?recipe2)
-(sameCaloricLevel ?recipe1 ?recipe2)
-(similarIngredients ?recipe1 ?recipe2)
-(sameMealType ?recipe1 ?recipe2)
-(sameCourse ?recipe1 ?recipe2)
-(sameDiet ?recipe1 ?recipe2))
-
-(<== (similarRecipe ?recipe1 ?recipe2)
-(sameCaloricLevel ?recipe1 ?recipe2)
-(similarIngredients ?recipe1 ?recipe2)
-(sameMealType ?recipe1 ?recipe2)
-(sameCourse ?recipe1 ?recipe2)
-(sameDishType ?recipe1 ?recipe2)
-(sameSkillLevel ?recipe1 ?recipe2))
-
 
 (<== (dietaryRestrictionOf VeganDiet ?recipe)
 (recipeCuisine VeganCuisine ?recipe))
@@ -119,13 +160,13 @@
 (ingredientOf ?ingredient1 ?recipe2)
 (ingredientOf ?ingredient2 ?recipe1)
 (ingredientOf ?ingredient2 ?recipe2)
-(different ?ingredient1 ?ingredient2)
 (ingredientOf ?ingredient3 ?recipe1)
 (ingredientOf ?ingredient3 ?recipe2)
 (ingredientOf ?ingredient4 ?recipe1)
 (ingredientOf ?ingredient4 ?recipe2)
-(different ?ingredient3 ?ingredient4)
+(different ?ingredient1 ?ingredient2)
 (different ?ingredient1 ?ingredient3)
 (different ?ingredient1 ?ingredient4)
 (different ?ingredient2 ?ingredient3)
-(different ?ingredient2 ?ingredient4))
+(different ?ingredient2 ?ingredient4)
+(different ?ingredient3 ?ingredient4))
