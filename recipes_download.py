@@ -108,7 +108,7 @@ def parse_ingredients(soup):
                     'tablespoon', 'container', 'dash', 'quart', 'pod', 'bunch', 'clove', 'gram', 'lb', 'oz',
                     'Tbsp', 'Tbs', 'tsp', 'Tsp', '½', '⅓', '¼']
     descriptions = ['finely', 'fine', 'chopped', 'large', 'medium', 'head', 'of', 'double-concentrated', 'grated',
-                    'soft', 'small', 'sprigs', 'ripe', 'leaves']
+                    'soft', 'small', 'sprigs', 'ripe', 'leaves', 'fresh']
     delete = ['Equipment', ':', ';']
     ret = []
     for ing in ingredients:
@@ -267,7 +267,7 @@ def parse_tags(soup):
                     t = "Pastry-Stuff"
                 elif type == "Pasta":
                     t = "PastaDish"
-                t.replace(" ", "")
+                t = t.replace(" ", "")
                 types.append(t)
 
     return cuisine, meal, dietary, styles, skill, dish, types
