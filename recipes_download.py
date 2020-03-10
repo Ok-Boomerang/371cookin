@@ -399,6 +399,7 @@ if __name__ == "__main__":
         for url in recipe_list:
             website_url = requests.get(url).text
             soup = BeautifulSoup(website_url, 'lxml')
+            url = '"' + url + '"'
             parse_recipe(url, soup, "recipe%d" % count, f)
             count += 1
 
