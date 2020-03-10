@@ -109,9 +109,10 @@ def parse_ingredients(soup):
                     'Tbsp', 'Tbs', 'tsp', 'Tsp', '½', '⅓', '¼']
     descriptions = ['finely', 'fine', 'chopped', 'large', 'medium', 'head', 'of', 'double-concentrated', 'grated',
                     'soft', 'small', 'sprigs', 'ripe', 'leaves']
+    delete = ['Equipment', ':', ';']
     ret = []
     for ing in ingredients:
-        if "Equipment" not in ing and "thermometer" not in ing:
+        if all([dele not in ing for dele in delete]):
             if '(' in ing:
                 first = ing.index('(')
                 second = ing.index(')')
