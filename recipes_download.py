@@ -111,7 +111,7 @@ def parse_ingredients(soup):
                     'soft', 'small', 'sprigs', 'ripe', 'leaves']
     ret = []
     for ing in ingredients:
-        if "Equipment" not in ing:
+        if "Equipment" not in ing and "thermometer" not in ing:
             if '(' in ing:
                 first = ing.index('(')
                 second = ing.index(')')
