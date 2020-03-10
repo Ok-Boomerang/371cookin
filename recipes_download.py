@@ -111,42 +111,43 @@ def parse_ingredients(soup):
                     'soft', 'small', 'sprigs', 'ripe', 'leaves']
     ret = []
     for ing in ingredients:
-        if '(' in ing:
-            first = ing.index('(')
-            second = ing.index(')')
-            ing = ing.replace(ing[first:second + 1], "")
-        if '(' in ing:
-            first = ing.index('(')
-            second = ing.index(')')
-            ing = ing.replace(ing[first:second + 1], "")
-        if ',' in ing:
-            ind = ing.index(',')
-            ing = ing[:ind]
-        ing = ing.replace('-', " ")
-        arr = ing.split()
-        if "or" in arr:
-            ind = arr.index("or")
-            arr = arr[:ind]
-        for meas in measurements:
-            if meas in ing:
-                for i, word in enumerate(arr):
-                    if meas in word:
-                        arr = arr[i + 1:]
-        for word in arr:
-            for x in word:
-                if x.isdigit():
+        if "Equipment" not in ing:
+            if '(' in ing:
+                first = ing.index('(')
+                second = ing.index(')')
+                ing = ing.replace(ing[first:second + 1], "")
+            if '(' in ing:
+                first = ing.index('(')
+                second = ing.index(')')
+                ing = ing.replace(ing[first:second + 1], "")
+            if ',' in ing:
+                ind = ing.index(',')
+                ing = ing[:ind]
+            ing = ing.replace('-', " ")
+            arr = ing.split()
+            if "or" in arr:
+                ind = arr.index("or")
+                arr = arr[:ind]
+            for meas in measurements:
+                if meas in ing:
+                    for i, word in enumerate(arr):
+                        if meas in word:
+                            arr = arr[i + 1:]
+            for word in arr:
+                for x in word:
+                    if x.isdigit():
+                        arr.remove(word)
+                        break
+                if word == "g" or word == "g.":
                     arr.remove(word)
-                    break
-            if word == "g" or word == "g.":
-                arr.remove(word)
-        for desc in descriptions:
-            if desc in arr:
-                arr.remove(desc)
-        for i, word in enumerate(arr):
-            arr[i] = word[0].upper() + word[1:]
-        if arr:
-            ingredient = remove_accents("".join(arr))
-            ret.append(ingredient)
+            for desc in descriptions:
+                if desc in arr:
+                    arr.remove(desc)
+            for i, word in enumerate(arr):
+                arr[i] = word[0].upper() + word[1:]
+            if arr:
+                ingredient = remove_accents("".join(arr))
+                ret.append(ingredient)
 
     return ret
 
