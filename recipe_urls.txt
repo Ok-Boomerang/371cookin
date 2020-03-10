@@ -192,7 +192,6 @@ https://www.epicurious.com/recipes/food/views/tomato-and-cheese-cobbler
 https://www.epicurious.com/recipes/food/views/one-of-each-soup-105905
 https://www.epicurious.com/recipes/food/views/foolproof-grilled-chicken-108166
 https://www.epicurious.com/recipes/food/views/bacon-and-cheddar-toasts-109432
-https://www.epicurious.com/recipes/food/views/apple-and-calvados-tart-107610
 https://www.epicurious.com/recipes/food/views/cranberry-pistachio-baked-alaska
 https://www.epicurious.com/recipes/food/views/skillet-dressing-with-cornbread-and-biscuits
 https://www.epicurious.com/recipes/food/views/cheesy-corn-spoon-bread
@@ -209,9 +208,7 @@ https://www.epicurious.com/recipes/food/views/crab-rangoon-cream-cheese-crab-won
 https://www.epicurious.com/recipes/food/views/creamy-potato-salad-with-lemon-and-fresh-herbs-238804
 https://www.epicurious.com/recipes/food/views/pound-cake-with-blueberries-and-lavender-syrup-109663
 https://www.epicurious.com/recipes/food/views/crispy-cornmeal-bacon-waffles-109154
-https://www.epicurious.com/recipes/food/views/chicken-and-root-vegetable-pot-pie
 https://www.epicurious.com/recipes/food/views/homemade-american-cheese
-https://www.epicurious.com/recipes/food/views/baked-alaska-saint-pierre-109544
 https://www.epicurious.com/recipes/food/views/buttermilk-cabbage-soup-with-black-walnut-pesto
 https://www.epicurious.com/recipes/food/views/roast-chicken-with-smothered-cabbage-bacon-and-potatoes
 https://www.epicurious.com/recipes/food/views/slow-cooker-macaroni-and-cheese

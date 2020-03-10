@@ -60,7 +60,7 @@ EVENT = ['Anniversary', 'Bastille Day', 'Birthday', 'Christmas', 'Christmas Eve'
 
 class Recipe:
     def __init__(self, name, url, rating, ingredients, cuisine, meal, course, cooktime, calories, methods, restriction,
-                 type, skill, event):
+                 type, skill):
         self.name = name
         self.url = url
         self.rating = rating
@@ -74,17 +74,16 @@ class Recipe:
         self.restriction = restriction
         self.type = type
         self.skill = skill
-        self.event = event
 
 
 def parse_recipe(url, soup, id, f):
     name = parse_name(soup)
     rating = parse_rating(soup)
     ingredients = parse_ingredients(soup)
-    cuisine, meal, dietary, style, skill, course, type, event = parse_tags(soup)
+    cuisine, meal, dietary, style, skill, course, type = parse_tags(soup)
     cooktime = parse_time(soup)
     calories = parse_calories(soup)
-    insert_kb(Recipe(name, url, rating, ingredients, cuisine, meal, course, cooktime, calories, style, dietary, type, skill, event), id, f)
+    insert_kb(Recipe(name, url, rating, ingredients, cuisine, meal, course, cooktime, calories, style, dietary, type, skill), id, f)
 
 
 def parse_name(soup):
@@ -268,12 +267,6 @@ def parse_tags(soup):
                     t = "PastaDish"
                 t.replace(" ", "")
                 types.append(t)
-        for event in EVENT:
-            if tag == event:
-                e = event
-                e = e.replace("'", "")
-                e = e.replace("/", "")
-                e = e.replace(".", "")
 
     return cuisine, meal, dietary, styles, skill, dish, types
 
