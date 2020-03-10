@@ -17,7 +17,8 @@ DIETARY = ['Healthy', 'High Fiber', 'Kid-Friendly', 'Low Cholesterol', 'Low Fat'
            'Soy Free', 'Tree Nut Free', 'Paleo', 'Pescatarian', 'High Protein']
 
 STYLE = ['Bake', 'Barbecue', 'Boil', 'Braise', 'Brine', 'Broil', 'Chill', 'Deep Fry', 'Freeze', 'Fry', 'Marinate',
-         'No-Cook', 'Pan-Fry', 'Poach', 'Roast', 'Sauté', 'Simmer', 'Steam', 'Stew', 'Stir-Fry', 'Grill', 'Backyard BBQ']
+         'No-Cook', 'Pan-Fry', 'Poach', 'Roast', 'Sauté', 'Simmer', 'Steam', 'Stew', 'Stir-Fry', 'Grill',
+         'Backyard BBQ']
 
 SKILL = ['Quick & Easy', "Advance Prep Req'd", 'Gourmet']
 
@@ -27,35 +28,55 @@ TYPES = ['Bread', 'Brownie', 'Casserole/Gratin', 'Dip', 'Flat Bread', 'Frozen De
 INGREDIENTS = ['Absinthe', 'AleBeer', 'AlfredoSauce', 'ArtificialFoodColoring', 'Asparagus-Foodstuff', 'Bacon', 'Bagel',
                'BakingChocolate-Unsweetened', 'BakingPowder', 'BalsamicVinegar', 'BarbecueSauce', 'Barley-TheGrain',
                'Beef', 'Beer', 'Beet-Foodstuff', 'BellPepper', 'Biscuit', 'BlueCheese', 'BoiledEgg',
-               'Bologna', 'Brandy-Liquor', 'Bread', 'Broccoli-Foodstuff', 'BrownRice-Foodstuff', 'BrownSugar', 'BrusselsSprout',
-               'BuffaloWing', 'Butter', 'Buttermilk', 'Cabbage-Foodstuff', 'CakeMix', 'CannelloniNoodle', 'Caper-TheCondiment',
-               'Carrot-Foodstuff', 'Caviar', 'Chicken-Meat', 'ChilePepper', 'Chocolate', 'Cinnamon-Spice', 'Clove-Spice',
-               'CocktailSauce', 'Cocoa-ThePowder', 'CoconutMeat', 'CoconutMilk', 'CoconutOil', 'Coffee-Beverage', 'Cognac-Liquor',
-               'CornMeal', 'CornSyrup', 'CottageCheese', 'CowsMilk-Product', 'Cracker-FoodItem', 'Cream-Dairy', 'CreamOfRice',
-               'CreamOfWheat', 'Cucumber-Foodstuff', 'DijonMustard', 'DistilledWater', 'DriedFish', 'Duck-Meat', 'Egg-Chickens',
-               'EggWhites-Food', 'EggYolk-Food', 'EnglishMuffin', 'Fennel', 'FettuciniNoodle', 'Frosting', 'Garlic', 'GoatCheese',
-               'Goose-Meat', 'Granola', 'GroundBeef', 'GroundTurkey', 'HalfAndHalf', 'Guacamole', 'Honey', 'HoneyMustard',
-               'Horseradish-Condiment', 'HotSauce', 'IceCream', 'IrishWhiskey', 'JalapenoPepper', 'Jam-Foodstuff', 'Jelly-Foodstuff',
-               'Ketchup', 'Lamb-Meat', 'LasagnaNoodle', 'LemonJuice', 'Lettuce-Foodstuff', 'LimeJuice', 'MacaroniNoodle',
-               'MapleSyrup', 'Margarine', 'MarinaraSauce', 'Marshmallow', 'MascarponeCheese', 'Matzo', 'Mayonnaise', 'Molasses',
-               'Muesli', 'Mushroom-Broadly', 'Mutton', 'Nutmeg', 'Oat-TheGrain', 'Oatmeal', 'Olive-Foodstuff', 'OliveOil',
-               'Onion-Foodstuff', 'OrangeJuice', 'PalmOil', 'Pea-Foodstuff', 'PeanutButter', 'PeanutOil', 'Pepper-TheSpice',
+               'Bologna', 'Brandy-Liquor', 'Bread', 'Broccoli-Foodstuff', 'BrownRice-Foodstuff', 'BrownSugar',
+               'BrusselsSprout',
+               'BuffaloWing', 'Butter', 'Buttermilk', 'Cabbage-Foodstuff', 'CakeMix', 'CannelloniNoodle',
+               'Caper-TheCondiment',
+               'Carrot-Foodstuff', 'Caviar', 'Chicken-Meat', 'ChilePepper', 'Chocolate', 'Cinnamon-Spice',
+               'Clove-Spice',
+               'CocktailSauce', 'Cocoa-ThePowder', 'CoconutMeat', 'CoconutMilk', 'CoconutOil', 'Coffee-Beverage',
+               'Cognac-Liquor',
+               'CornMeal', 'CornSyrup', 'CottageCheese', 'CowsMilk-Product', 'Cracker-FoodItem', 'Cream-Dairy',
+               'CreamOfRice',
+               'CreamOfWheat', 'Cucumber-Foodstuff', 'DijonMustard', 'DistilledWater', 'DriedFish', 'Duck-Meat',
+               'Egg-Chickens',
+               'EggWhites-Food', 'EggYolk-Food', 'EnglishMuffin', 'Fennel', 'FettuciniNoodle', 'Frosting', 'Garlic',
+               'GoatCheese',
+               'Goose-Meat', 'Granola', 'GroundBeef', 'GroundTurkey', 'HalfAndHalf', 'Guacamole', 'Honey',
+               'HoneyMustard',
+               'Horseradish-Condiment', 'HotSauce', 'IceCream', 'IrishWhiskey', 'JalapenoPepper', 'Jam-Foodstuff',
+               'Jelly-Foodstuff',
+               'Ketchup', 'Lamb-Meat', 'LasagnaNoodle', 'LemonJuice', 'Lettuce-Foodstuff', 'LimeJuice',
+               'MacaroniNoodle',
+               'MapleSyrup', 'Margarine', 'MarinaraSauce', 'Marshmallow', 'MascarponeCheese', 'Matzo', 'Mayonnaise',
+               'Molasses',
+               'Muesli', 'Mushroom-Broadly', 'Mutton', 'Nutmeg', 'Oat-TheGrain', 'Oatmeal', 'Olive-Foodstuff',
+               'OliveOil',
+               'Onion-Foodstuff', 'OrangeJuice', 'PalmOil', 'Pea-Foodstuff', 'PeanutButter', 'PeanutOil',
+               'Pepper-TheSpice',
                'Pepperoni', 'PestoSauce', 'Pickle', 'PieCrust', 'Pistachio-TheNut', 'PitaBread', 'PizzaCrust', 'Pork',
-               'Potato-Foodstuff', 'PrimeRib-MeatCut', 'Prune', 'Pumpkin-Foodstuff', 'Radish-Foodstuff', 'Raisin', 'RamenNoodle',
+               'Potato-Foodstuff', 'PrimeRib-MeatCut', 'Prune', 'Pumpkin-Foodstuff', 'Radish-Foodstuff', 'Raisin',
+               'RamenNoodle',
                'Ravioli', 'RedWineVinegar', 'Rice-Foodstuff', 'RiceFlour', 'RiceNoodle', 'RoastBeef-LunchMeat', 'Rum',
-               'Rye-TheGrain', 'Saffron', 'Salami', 'Salsa-TheCondiment', 'Sausage', 'ScotchWhisky', 'SesameOil', 'SesameSeed',
-               'Soybean-Foodstuff', 'SoyMilk', 'SpaghettiNoodle', 'SpicyBrownMustard', 'Spinach-Foodstuff', 'Steak-Beef-MeatCut',
+               'Rye-TheGrain', 'Saffron', 'Salami', 'Salsa-TheCondiment', 'Sausage', 'ScotchWhisky', 'SesameOil',
+               'SesameSeed',
+               'Soybean-Foodstuff', 'SoyMilk', 'SpaghettiNoodle', 'SpicyBrownMustard', 'Spinach-Foodstuff',
+               'Steak-Beef-MeatCut',
                'SteakSauce', 'SweetPotato-Foodstuff', 'TabascoSauce', 'TartarSauce', 'Tequila', 'Tomato-Foodstuff',
                'Turkey-Meat', 'VanillaExtract', 'Veal', 'VegetableOil', 'Venison', 'VermicelliNoodle', 'Vermouth',
                'Vinegar', 'Vodka', 'WheatFlour', 'WheatGerm', 'Whey', 'WhippedCream', 'Whisky', 'WhiteRice-Foodstuff',
-               'WhiteWineVinegar', 'WholeMilk', 'Wine', 'WineVinegar', 'Yam-Foodstuff', 'Yeast', 'YellowMustard', 'Yogurt',
-                'Zucchini-Foodstuff']
+               'WhiteWineVinegar', 'WholeMilk', 'Wine', 'WineVinegar', 'Yam-Foodstuff', 'Yeast', 'YellowMustard',
+               'Yogurt',
+               'Zucchini-Foodstuff']
 
-EVENT = ['Anniversary', 'Bastille Day', 'Birthday', 'Christmas', 'Christmas Eve', 'Cinco de Mayo', 'Cocktail Party', 'Easter',
+EVENT = ['Anniversary', 'Bastille Day', 'Birthday', 'Christmas', 'Christmas Eve', 'Cinco de Mayo', 'Cocktail Party',
+         'Easter',
          'Engagement Party', 'Fall', 'Family Reunion', "Father's Day", 'Fourth of July', 'Graduation', 'Halloween',
-         'Hanukkah', 'Kentucky Derby', 'Mardi Gras', "Mother's Day", "New Year's Day", "New Year's Eve", "Oscars", 'Party',
+         'Hanukkah', 'Kentucky Derby', 'Mardi Gras', "Mother's Day", "New Year's Day", "New Year's Eve", "Oscars",
+         'Party',
          'Passover', 'Picnic', 'Poker/Game Night', 'Potluck', 'Ramadan', 'Rosh Hashanah', 'Shower', 'Spring',
-         "St. Patrick's Day", 'Summer', 'Superbowl', 'Tailgating', 'Thnaksgiving', "Valentine's Day", 'Wedding', 'Winter']
+         "St. Patrick's Day", 'Summer', 'Superbowl', 'Tailgating', 'Thnaksgiving', "Valentine's Day", 'Wedding',
+         'Winter']
 
 
 class Recipe:
@@ -83,14 +104,16 @@ def parse_recipe(url, soup, id, f):
     cuisine, meal, dietary, style, skill, course, type = parse_tags(soup)
     cooktime = parse_time(soup)
     calories = parse_calories(soup)
-    insert_kb(Recipe(name, url, rating, ingredients, cuisine, meal, course, cooktime, calories, style, dietary, type, skill), id, f)
+    insert_kb(
+        Recipe(name, url, rating, ingredients, cuisine, meal, course, cooktime, calories, style, dietary, type, skill),
+        id, f)
 
 
 def parse_name(soup):
     name = soup.find("h1", {"itemprop": "name"}).text
     name = name.replace(" ", "")
-    name = name.replace(",","")
-    name = name.replace("-","")
+    name = name.replace(",", "")
+    name = name.replace("-", "")
     if '(' in name:
         ind = name.index('(')
         name = name[:ind]
@@ -106,9 +129,9 @@ def parse_ingredients(soup):
     ingredients = [ingredient.text for ingredient in soup.find_all('li', {'class': 'ingredient'})]
     measurements = ['bunch', 'can', 'clove', 'cup', 'ounce', 'package', 'pinch', 'pint', 'pound', 'teaspoon',
                     'tablespoon', 'container', 'dash', 'quart', 'pod', 'bunch', 'clove', 'gram', 'lb', 'oz',
-                    'Tbsp', 'Tbs', 'tsp', 'Tsp', '½', '⅓', '¼']
+                    'Tbsp', 'Tbs', 'tsp', 'Tsp', '½', '⅓', '¼', 'handful']
     descriptions = ['finely', 'fine', 'chopped', 'large', 'medium', 'head', 'of', 'double-concentrated', 'grated',
-                    'soft', 'small', 'sprigs', 'ripe', 'leaves', 'fresh']
+                    'soft', 'small', 'sprigs', 'ripe', 'leaves', 'fresh', 'warm']
     delete = ['Equipment', ':', ';']
     ret = []
     for ing in ingredients:
@@ -163,7 +186,7 @@ def parse_tags(soup):
     types = []
     events = []
     tags = [tag.text for tag in soup.find_all('dt', {'itemprop': 'recipeCategory'})] + \
-           [tag.text for tag in soup.find_all('dt', {'itemprop':'recipeCuisine'})]
+           [tag.text for tag in soup.find_all('dt', {'itemprop': 'recipeCuisine'})]
     for tag in tags:
         for cuis in CUISINES:
             if tag == cuis:
@@ -379,7 +402,8 @@ def remove_accents(obj):
     accents = {"ç": "c",
                "è": "e",
                "î": "i",
-               "ñ": "n"}
+               "ñ": "n",
+               "’": ""}
     for accent in accents.keys():
         obj = obj.replace(accent, accents[accent])
     return obj
@@ -401,4 +425,3 @@ if __name__ == "__main__":
             url = '"' + url + '"'
             parse_recipe(url, soup, "recipe%d" % count, f)
             count += 1
-
