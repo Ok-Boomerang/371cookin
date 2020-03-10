@@ -12,11 +12,9 @@
 (similarRecipe ?inputRecipe ?outputRecipe))
 
 (<== (similarRecipe ?recipe1 ?recipe2)
-(sameCookMethod ?recipe1 ?recipe2)
 (sameCaloricLevel ?recipe1 ?recipe2)
 (similarIngredients ?recipe1 ?recipe2)
 (sameMealType ?recipe1 ?recipe2)
-(sameCourse ?recipe1 ?recipe2)
 (sameCookTimeLevel ?recipe1 ?recipe2))
 
 (<== (similarRecipe ?recipe1 ?recipe2)

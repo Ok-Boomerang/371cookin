@@ -329,20 +329,14 @@ def insert_kb(recipe, id, f):
         f.write('(cookMethodOf %s %s)' % (style, id))
         f.write('\n')
     cal = recipe.calories
-    if cal < 100:
-        f.write('(recipeCalories skinny %s)' % id)
-        f.write('\n')
-    elif 200 > cal > 100:
+    if cal < 200:
         f.write('(recipeCalories low %s)' % id)
         f.write('\n')
-    elif 200 < cal < 300:
+    elif 200 < cal < 400:
         f.write('(recipeCalories moderate %s)' % id)
         f.write('\n')
-    elif 300 < cal < 400:
-        f.write('(recipeCalories high %s)' % id)
-        f.write('\n')
     elif cal > 400:
-        f.write('(recipeCalories heavy %s)' % id)
+        f.write('(recipeCalories high %s)' % id)
         f.write('\n')
     skill = recipe.skill
     if skill == "Quick & Easy":
@@ -394,6 +388,9 @@ def remove_accents(obj):
 if __name__ == "__main__":
     with open('recipe_urls.txt', 'r') as f:
         recipe_list = f.read().splitlines()
+    for recipe in recipe_list:
+        if recipe_list.count(recipe) > 1:
+            recipe_list.remove(recipe)
     count = 1
     with open('recipes.krf', 'w') as f:
         f.write('(in-microtheory CookingMastersMt)')
