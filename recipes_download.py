@@ -395,7 +395,8 @@ def insert_kb(recipe, id, f):
             f.write('\n')
             f.write('(ingredientOf %s %s)' % (ingredient, id))
             f.write('\n')
-            INGREDIENTS.append(ingredient)
+            if ingredient != "Cheese":
+                INGREDIENTS.append(ingredient)
 
 
 def remove_accents(obj):
