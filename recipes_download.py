@@ -117,6 +117,10 @@ def parse_name(soup):
     if '(' in name:
         ind = name.index('(')
         name = name[:ind]
+    name_split = name.split()
+    for ind, word in enumerate(name_split):
+        name_split[ind] = word[0].upper() + word[1:]
+    name = "".join(name)
     return remove_accents(name)
 
 
