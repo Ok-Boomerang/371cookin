@@ -41,7 +41,7 @@
 (recipeName ?outputRecipeName ?outputRecipe)
 (different ?inputRecipe ?outputRecipe)
 (similarRecipe ?inputRecipe ?outputRecipe)
-(sameCookTimeLevel ?inputRecipeName ?outputRecipeName))
+(sameCookTimeLevel ?inputRecipe ?outputRecipe))
 
 
 (<== (recommendRecipeCookTime ?inputRecipeName ?outputRecipeName ?cookTime)
@@ -52,13 +52,12 @@
 (recipeCookTime ?cookTime ?outputRecipe))
 
 
-
 (<== (recommendRecipeCalories ?inputRecipeName ?outputRecipeName)
 (recipeName ?inputRecipeName ?inputRecipe)
 (recipeName ?outputRecipeName ?outputRecipe)
 (different ?inputRecipe ?outputRecipe)
 (similarRecipe ?inputRecipe ?outputRecipe)
-(sameCaloricLevel ?inputRecipeName ?outputRecipeName))
+(sameCaloricLevel ?inputRecipe ?outputRecipe))
 
 
 (<== (recommendRecipeCalories ?inputRecipeName ?outputRecipeName ?calories)
@@ -112,29 +111,6 @@
 (<== (skillLevelOf beginner ?recipe)
 (cookMethodOf AssembledFood ?recipe))
 
-(<== (sameCuisine ?recipe1 ?recipe2)
-(recipeCuisine ?cuisine ?recipe1)
-(recipeCuisine ?cuisine ?recipe2))
-
-(<== (sameMealType ?recipe1 ?recipe2)
-(recipeMealType ?mealType ?recipe1)
-(recipeMealType ?mealType ?recipe2))
-
-(<== (sameCourse ?recipe1 ?recipe2)
-(recipeCourse ?course ?recipe1)
-(recipeCourse ?course ?recipe2))
-
-(<== (sameCookMethod ?recipe1 ?recipe2)
-(cookMethodOf ?cookMethod ?recipe1)
-(cookMethodOf ?cookMethod ?recipe2))
-
-(<== (sameDiet ?recipe1 ?recipe2)
-(dietaryRestrictionOf ?dietaryRestriction ?recipe1)
-(dietaryRestrictionOf ?dietaryRestriction ?recipe2))
-
-(<== (sameSkillLevel ?recipe1 ?recipe2)
-(skillLevelOf ?skillLevel ?recipe1)
-(skillLevelOf ?skillLevel ?recipe2))
 
 (<== (highRating ?recipe)
 (recipeRating 3 ?recipe))
@@ -142,18 +118,6 @@
 (recipeRating 3.5 ?recipe))
 (<== (highRating ?recipe)
 (recipeRating 4 ?recipe))
-
-(<== (sameCookTimeLevel ?recipe1 ?recipe2)
-(recipeCookTime ?cookTime ?recipe1)
-(recipeCookTime ?cookTime ?recipe2))
-
-(<== (sameCaloricLevel ?recipe1 ?recipe2)
-(recipeCalories ?caloricLevel ?recipe1)
-(recipeCalories ?caloricLevel ?recipe2))
-
-(<== (sameDishType ?recipe1 ?recipe2)
-(recipeDishType ?dishType ?recipe1)
-(recipeDishType ?dishType ?recipe2))
 
 (<== (notBasicIngredient ?ingredient)
 (isa ?ingredient DefaultDisjointEdibleStuffType)
@@ -171,15 +135,9 @@
 (ingredientOf ?ingredient2 ?recipe2)
 (ingredientOf ?ingredient3 ?recipe1)
 (ingredientOf ?ingredient3 ?recipe2)
-(ingredientOf ?ingredient4 ?recipe1)
-(ingredientOf ?ingredient4 ?recipe2)
 (different ?ingredient1 ?ingredient2)
 (different ?ingredient1 ?ingredient3)
-(different ?ingredient1 ?ingredient4)
 (different ?ingredient2 ?ingredient3)
-(different ?ingredient2 ?ingredient4)
-(different ?ingredient3 ?ingredient4)
 (notBasicIngredient ?ingredient1)
 (notBasicIngredient ?ingredient2)
-(notBasicIngredient ?ingredient3)
-(notBasicIngredient ?ingredient4))
+(notBasicIngredient ?ingredient3))
