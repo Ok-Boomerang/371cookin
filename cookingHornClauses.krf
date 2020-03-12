@@ -1,10 +1,6 @@
 (in-microtheory CookingMastersMt)
 ;;; Danielle Chamberlain, Anu Raife, Isaac Rivera
 
-
-;;; for MVP: cookMethod, calories, ingredients, meal type, course, dish type
-;;; to add to MVP: rating, cuisine, cook time, dietary restrictions, skill level
-
 (<== (recommendRecipe ?inputRecipeName ?outputRecipeName)
 (recipeName ?inputRecipeName ?inputRecipe)
 (recipeName ?outputRecipeName ?outputRecipe)
@@ -110,6 +106,14 @@
 
 (<== (skillLevelOf beginner ?recipe)
 (cookMethodOf AssembledFood ?recipe))
+
+(<== (sameCookTimeLevel ?recipe1 ?recipe2)
+(recipeCookTime ?cookTime ?recipe1)
+(recipeCookTime ?cookTime ?recipe2))
+
+(<== (sameCaloricLevel ?recipe1 ?recipe2)
+(recipeCalories ?caloricLevel ?recipe1)
+(recipeCalories ?caloricLevel ?recipe2))
 
 
 (<== (highRating ?recipe)
